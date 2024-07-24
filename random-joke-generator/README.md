@@ -1,30 +1,19 @@
-# React + TypeScript + Vite
+# Random Joke Generator
+This project is a simple Random Joke Generator built with React and TypeScript. It fetches a list of jokes from an external API and displays a random joke with the ability to show or hide the punchline. The project demonstrates the use of React hooks for state management and side effects, as well as basic error handling and conditional rendering.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Demo-Preview
+https://github.com/user-attachments/assets/df8bba04-da38-4f0f-abc9-4d40524722a8
 
-Currently, two official plugins are available:
+# Features
+- Fetches a list of jokes from the Official Joke API.
+- Displays a random joke setup and allows users to toggle the punchline visibility.
+- Provides a button to get a new random joke.
+- Shows a loading indicator while jokes are being fetched.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Dependencies
+- React
+- TypeScript
+- Tailwind
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# API
+This project uses the [Official Joke API](https://official-joke-api.appspot.com/jokes/ten) to fetch a list of jokes.
