@@ -26,10 +26,12 @@ export default function ImageSlider({ images }: ImageSliderProps) {
   return (
     <section>
       <div className="relative flex justify-center items-center w-[600px] h-[450px]">
-        <BsArrowLeftCircleFill
-          onClick={handlePrevious}
-          className="absolute left-4 size-6 cursor-pointer"
-        />
+        {current !== 0 ? (
+          <BsArrowLeftCircleFill
+            onClick={handlePrevious}
+            className="absolute left-4 size-6 cursor-pointer"
+          />
+        ) : null}
         {images.map((image, index) => (
           <img
             key={image.id}
@@ -40,10 +42,12 @@ export default function ImageSlider({ images }: ImageSliderProps) {
             } rounded-lg size-full`}
           />
         ))}
-        <BsArrowRightCircleFill
-          onClick={handleNext}
-          className="absolute right-4 size-6 cursor-pointer"
-        />
+        {current !== totalImages - 1 ? (
+          <BsArrowRightCircleFill
+            onClick={handleNext}
+            className="absolute right-4 size-6 cursor-pointer"
+          />
+        ) : null}
         <span className="absolute flex bottom-4">
           {images.map((_, index) => (
             <BsCircleFill
