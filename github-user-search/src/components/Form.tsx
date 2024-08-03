@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 
 type FormProps = {
-    onSubmit: (query: string) => Promise<void>;
+  onSubmit: (query: string) => Promise<void>;
   loading: boolean;
 };
 
