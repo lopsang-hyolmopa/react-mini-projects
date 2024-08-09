@@ -1,6 +1,7 @@
 .stars-container {
   width: 100%;
   cursor: pointer;
+  margin-bottom: 12px;
 }
 
 .star-active {
@@ -13,5 +14,4 @@
 
 span {
   font-size: 1.5em;
-  font-style: italic;
 }
