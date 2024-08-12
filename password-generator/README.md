@@ -1,50 +1,16 @@
-# React + TypeScript + Vite
+# Password Generator
+This project is a simple password generator built with React and TypeScript. It allows users to generate a random password with customizable options, including password length, the inclusion of numbers, and symbols. The generated password can be copied to the clipboard with a single click.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Demo-Preview
+https://github.com/user-attachments/assets/7dc8ba11-cff2-4886-8a05-39798bbffa9b
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
+- **Password Length Selection**: Users can select the length of the password using a slider, with a minimum length of 8 characters and a maximum length of 32 characters.
+- **Include Numbers**: Users can choose to include numbers in the generated password by checking a box.
+- **Include Symbols**: Users can also choose to include special symbols in the password.
+- **Copy to Clipboard**: The generated password can be easily copied to the clipboard with a click of a button, with a success message displayed upon copying.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Styling
+The app is styled using Tailwind CSS classes. The UI is responsive, with the password generator centered on the screen, featuring a modern and clean design.
