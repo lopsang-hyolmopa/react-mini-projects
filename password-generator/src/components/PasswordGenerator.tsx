@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const MIN_PASSWORD_LENGTH = 8;
-const MAX_PASSWORD_LENGTH = 32;
+import PasswordInput from "./PasswordInput";
+import Header from "./Header";
+import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "../constants";
+
 
 export default function PasswordGenerator() {
   const [length, setLength] = useState<number>(8);
@@ -12,7 +14,7 @@ export default function PasswordGenerator() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const generatePassword = useCallback(() => {
-    setIsPasswordCopied(false)
+    setIsPasswordCopied(false);
     let generatedPass = "";
 
     let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -39,15 +41,8 @@ export default function PasswordGenerator() {
   return (
     <div className="h-screen bg-black text-white flex items-center justify-center">
       <div className="h-[70%] w-[30%] rounded-lg">
-        <h1 className="text-4xl text-center mb-8">Password Generator</h1>
-        <input
-          type="text"
-          value={password}
-          className="w-[100%] bg-gray-800 mb-4 px-6 py-4 rounded focus:outline-none"
-          placeholder="password"
-          readOnly
-          ref={passwordRef}
-        />
+        <Header />
+        <PasswordInput password={password} passwordRef={passwordRef} />
         <div className="p-6 bg-gray-800 rounded flex flex-col gap-4 text-xl">
           <div>
             <div className="flex items-center justify-between">
@@ -82,7 +77,9 @@ export default function PasswordGenerator() {
           </div>
           <button
             onClick={copyPassword}
-            className={`rounded px-4 py-2 bg-blue-600 w-full ${isPasswordCopied && 'hover:bg-blue-700'}`}
+            className={`rounded px-4 py-2 bg-blue-600 w-full ${
+              !isPasswordCopied && "hover:bg-blue-700"
+            }`}
           >
             {isPasswordCopied ? "Copied successfully!" : "Copy Password"}
           </button>
