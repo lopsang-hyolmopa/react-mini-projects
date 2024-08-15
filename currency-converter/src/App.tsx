@@ -1,5 +1,7 @@
+import { CurrencyConverter } from "./components";
+
 function App() {
-  return <h1 className="text-4xl text-center">Currency Converter</h1>;
+  return <CurrencyConverter />;
 }
 
 export default App;
