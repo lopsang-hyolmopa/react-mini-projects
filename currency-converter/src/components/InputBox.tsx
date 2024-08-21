@@ -1,5 +1,7 @@
 import { useId } from "react";
 
+import { uppercaseCurrency } from "../utils";
+
 type InputBoxProps = {
   label: string;
   currencyOptions: string[];
@@ -37,7 +39,7 @@ export default function InputBox({
       >
         {currencyOptions.map((currency) => (
           <option key={currency} value={currency}>
-            {currency.toUpperCase()}
+            {uppercaseCurrency(currency)}
           </option>
         ))}
       </select>

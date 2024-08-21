@@ -3,7 +3,8 @@ import { MdOutlineSwapVert } from "react-icons/md";
 
 import InputBox from "./InputBox";
 import useCurrencyInfo from "../hooks/useCurrencyInfo";
-import { formEvent } from "../types";
+import { FormEvent } from "../types";
+import { getTwoDecimals, uppercaseCurrency } from "../utils";
 
 export default function Form() {
   const [currencyFrom, setCurrencyFrom] = useState<string>("cad");
@@ -22,9 +23,9 @@ export default function Form() {
     setConvertedAmount(amount)
   };
 
-  const finalAmount = Number((amount * currencyInfo[currencyTo]).toFixed(2))
+  const finalAmount = Number(getTwoDecimals(amount * currencyInfo[currencyTo]))
 
-  const handleSubmit = (e: formEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setConvertedAmount(finalAmount)
   };
@@ -68,7 +69,7 @@ export default function Form() {
         type="submit"
         className="w-full bg-teal-600 rounded p-3 text-xl hover:bg-teal-500"
       >
-        Convert {currencyFrom.toUpperCase()} to {currencyTo.toUpperCase()}
+        Convert {uppercaseCurrency(currencyFrom)} to {uppercaseCurrency(currencyTo)}
       </button>
     </form>
   );
