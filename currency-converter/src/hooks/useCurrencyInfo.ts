@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { API_URL } from "../constants";
+import { CurrencyRates } from "../types";
 
 export default function useCurrencyInfo(currency: string) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<CurrencyRates>({});
 
   useEffect(() => {
     const fetchCurrencyRates = async () => {
