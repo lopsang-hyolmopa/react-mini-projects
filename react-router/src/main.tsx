@@ -1,14 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
 
-import App from "./App.tsx";
+import { App } from "./App";
 import "./index.css";
-import Layout from "./Layout.tsx";
-import Home from "./components/Home.tsx";
-import About from "./components/About.tsx";
-import Contact from "./components/Contact.tsx";
 
+/*
+One way to create routes
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -29,10 +27,12 @@ const appRouter = createBrowserRouter([
     ],
   },
 ]);
+*/
+
+const appRouter = createBrowserRouter(createRoutesFromElements(App))
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RouterProvider router={appRouter} />
-    <App />
   </StrictMode>
 );
