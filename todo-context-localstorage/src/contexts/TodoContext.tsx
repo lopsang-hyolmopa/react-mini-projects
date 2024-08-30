@@ -16,12 +16,26 @@ export const TodoContextProvider = ({ children }: Props) => {
   };
 
   const updateTodo = (id: string, todo: TodoType) => {
-    set;
+    setAllTodos((prevTodos) =>
+      prevTodos.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo))
+    );
   };
 
-  const deleteTodo = (id: string) => {};
+  const deleteTodo = (id: string) => {
+    setAllTodos((prevTodos) =>
+      prevTodos.filter((prevTodo) => prevTodo.id !== id)
+    );
+  };
 
-  const toogleComplete = () => {};
+  const toogleComplete = (id: string) => {
+    setAllTodos((prevTodos) =>
+      prevTodos.map((prevTodo) =>
+        prevTodo.id === id
+          ? { ...prevTodo, isCompleted: !prevTodo.isCompleted }
+          : prevTodo
+      )
+    );
+  };
 
   useEffect(() => {
     const locallySavedTodos = JSON.parse(localStorage.getItem("todos") || "[]");
@@ -34,8 +48,6 @@ export const TodoContextProvider = ({ children }: Props) => {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(allTodos));
   }, [allTodos]);
-
-  console.log(allTodos);
 
   return (
     <TodoContext.Provider

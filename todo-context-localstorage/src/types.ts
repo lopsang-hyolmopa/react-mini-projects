@@ -9,5 +9,5 @@ export type TodoContextType = {
   addTodo: (todo: TodoType) => void;
   updateTodo: (id: string, todo: TodoType) => void;
   deleteTodo: (id: string) => void;
-  toogleComplete: () => void;
+  toogleComplete: (id: string) => void;
 };
