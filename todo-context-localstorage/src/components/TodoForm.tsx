@@ -7,7 +7,7 @@ function TodoForm() {
 
   const { addTodo } = useTodo();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newTodo = {
       id: Date.now().toString(),
