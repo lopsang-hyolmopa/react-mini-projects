@@ -1,7 +1,10 @@
-import { TodoForm } from "./components";
-import { TodoContextProvider } from "./contexts";
+import { TodoForm, TodoItem } from "./components";
+import { TodoContextProvider, useTodo } from "./contexts";
+import { TodoType } from "./types";
 
 function App() {
+  const { allTodos } = useTodo();
+
   return (
     <TodoContextProvider>
       <div className="bg-[#172842] min-h-screen py-8">
@@ -13,7 +16,9 @@ function App() {
             <TodoForm />
           </div>
           <div className="flex flex-wrap gap-y-3">
-            {/*Loop and Add TodoItem here */}
+            {allTodos.map((todo: TodoType) => (
+              <TodoItem key={todo.id} todo={todo} />
+            ))}
           </div>
         </div>
       </div>

@@ -6,7 +6,19 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const TodoContext = createContext<TodoContextType | null>(null);
+export const TodoContext = createContext<TodoContextType>({
+  allTodos: [
+    {
+      id: "1",
+      title: "Test",
+      isCompleted: false,
+    },
+  ],
+  addTodo: () => {},
+  updateTodo: () => {},
+  deleteTodo: () => {},
+  toogleComplete: () => {},
+});
 
 export const TodoContextProvider = ({ children }: Props) => {
   const [allTodos, setAllTodos] = useState<TodoType[]>([]);
