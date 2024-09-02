@@ -6,25 +6,18 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const TodoContext = createContext<TodoContextType>({
-  allTodos: [
-    {
-      id: "1",
-      title: "Test",
-      isCompleted: false,
-    },
-  ],
-  addTodo: () => {},
-  updateTodo: () => {},
-  deleteTodo: () => {},
-  toogleComplete: () => {},
-});
+export const TodoContext = createContext<TodoContextType | null>(null);
 
 export const TodoContextProvider = ({ children }: Props) => {
   const [allTodos, setAllTodos] = useState<TodoType[]>([]);
 
   const addTodo = (todo: TodoType) => {
-    setAllTodos((prevTodos) => [{ ...todo }, ...prevTodos]);
+    console.log("todo from context", todo);
+    setAllTodos((prevTodos) => {
+      console.log([todo, ...prevTodos]);
+      return [todo, ...prevTodos];
+    });
+    console.log("All todos", allTodos);
   };
 
   const updateTodo = (id: string, todo: TodoType) => {
@@ -58,6 +51,7 @@ export const TodoContextProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
+    console.log("all todos from effect", allTodos)
     localStorage.setItem("todos", JSON.stringify(allTodos));
   }, [allTodos]);
 
@@ -71,5 +65,10 @@ export const TodoContextProvider = ({ children }: Props) => {
 };
 
 export function useTodo() {
-  return useContext(TodoContext);
+  const context = useContext(TodoContext);
+
+  if (!context) {
+    throw new Error("useTodo must be used within a TodoContextProvider");
+  }
+  return context;
 }

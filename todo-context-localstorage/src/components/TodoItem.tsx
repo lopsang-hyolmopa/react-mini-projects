@@ -52,7 +52,7 @@ function TodoItem({ todo }: Props) {
             editTodo();
           } else setIsTodoEditable((prev) => !prev);
         }}
-        disabled={todo.isCompleted}
+        // disabled={todo.isCompleted}
       >
         {isTodoEditable ? "📁" : "✏️"}
       </button>
