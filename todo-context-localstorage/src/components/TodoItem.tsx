@@ -19,11 +19,12 @@ function TodoItem({ todo }: Props) {
 
   const editTodo = () => {
     updateTodo(todo.id, { ...todo, title: updatedTodoTitle });
+    setIsTodoEditable(false)
   };
 
   return (
     <div
-      className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
+      className={`w-full flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
         todo.isCompleted ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
       }`}
     >
@@ -36,7 +37,7 @@ function TodoItem({ todo }: Props) {
       <input
         type="text"
         className={`border outline-none w-full bg-transparent rounded-lg ${
-          isTodoEditable ? "border-black/10 px-2" : "border-transparent"
+          isTodoEditable ? "px-2 bg-white" : "border-transparent"
         } ${todo.isCompleted ? "line-through" : ""}`}
         value={updatedTodoTitle}
         onChange={(e) => setUpdatedTodoTitle(e.target.value)}
@@ -52,7 +53,7 @@ function TodoItem({ todo }: Props) {
             editTodo();
           } else setIsTodoEditable((prev) => !prev);
         }}
-        // disabled={todo.isCompleted}
+        disabled={todo.isCompleted}
       >
         {isTodoEditable ? "📁" : "✏️"}
       </button>

@@ -12,12 +12,9 @@ export const TodoContextProvider = ({ children }: Props) => {
   const [allTodos, setAllTodos] = useState<TodoType[]>([]);
 
   const addTodo = (todo: TodoType) => {
-    console.log("todo from context", todo);
     setAllTodos((prevTodos) => {
-      console.log([todo, ...prevTodos]);
       return [todo, ...prevTodos];
     });
-    console.log("All todos", allTodos);
   };
 
   const updateTodo = (id: string, todo: TodoType) => {
@@ -51,7 +48,6 @@ export const TodoContextProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    console.log("all todos from effect", allTodos)
     localStorage.setItem("todos", JSON.stringify(allTodos));
   }, [allTodos]);
 
